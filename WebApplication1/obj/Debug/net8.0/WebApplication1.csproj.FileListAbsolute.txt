@@ -32,3 +32,8 @@
 /home/akshayrao/RiderProjects/WebApplication1/WebApplication1/obj/Debug/net8.0/WebApplication1.genruntimeconfig.cache
 /home/akshayrao/RiderProjects/WebApplication1/WebApplication1/obj/Debug/net8.0/ref/WebApplication1.dll
 /home/akshayrao/RiderProjects/WebApplication1/WebApplication1/obj/Debug/net8.0/WebApplication1.sourcelink.json
+/home/akshayrao/RiderProjects/WebApplication1/WebApplication1/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll
+/home/akshayrao/RiderProjects/WebApplication1/WebApplication1/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/home/akshayrao/RiderProjects/WebApplication1/WebApplication1/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll
+/home/akshayrao/RiderProjects/WebApplication1/WebApplication1/bin/Debug/net8.0/Npgsql.dll
+/home/akshayrao/RiderProjects/WebApplication1/WebApplication1/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll

@@ -1,3 +1,5 @@
+
+using WebApplication1.Database;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -17,9 +19,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 
-Note[] notes = new Note[]
-    {
-       new Note( "akshay", "build this app", "nodate"),new Note( "aakash", "learn c#", "today" ),new Note( "charan", "testnote", "today" ) };
+
+
 
 
 
@@ -32,26 +33,51 @@ Note[] notes = new Note[]
 
 app.MapGet("/notes", () =>
 {
-    return notes;
+    List<Note> blogs = new List<Note>();
+    using (var db = new NotesContext())
+    {
+        blogs = db.Notes.Select(x=>x).ToList();
+
+        
+    }
+
+    return blogs;
 });
 
 app.MapPost("/createNote", (Note note) =>
-{ 
-    notes = notes.Append(note).ToArray();
-    return notes;
+{
+    using (var db = new NotesContext())
+    {
+        db.Notes.Add(note);
+        db.SaveChanges();
+    }
+
+    return "successfull";
 });
 
 app.MapPatch("/updateNote/{title}/", (string title, Note newnote) =>
 {
-    notes = notes.Select((note) => note.Title != title ? note :newnote).ToArray();
+    using (var db = new NotesContext())
+    {
+        db.Notes.Update(newnote);
+        db.SaveChanges();
+    }
+
+    return "updated sucessfully";
 });
 
 app.MapDelete("/deleteNote/{title}/", (string title) =>
 {
-    notes = notes.Where((note) => note.Title != title).ToArray();
+    using (var db = new NotesContext())
+    {
+        var value = db.Notes.SingleOrDefault(note => note.Title == title);
+        db.Notes.Remove(value);
+        db.SaveChanges();
+    }
+
+    return "deleted sucessfully";
 });
 
 
 app.Run();
 
-record Note(string Title, string note, string dateandtime){}
