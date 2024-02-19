@@ -41,10 +41,16 @@ app.MapPost("/createNote", (Note note) =>
     return notes;
 });
 
-app.MapPatch("/updateNote/{title}", (string title, Note note) =>
+app.MapPatch("/updateNote/{title}/", (string title, Note newnote) =>
 {
-    
+    notes = notes.Select((note) => note.Title != title ? note :newnote).ToArray();
 });
+
+app.MapDelete("/deleteNote/{title}/", (string title) =>
+{
+    notes = notes.Where((note) => note.Title != title).ToArray();
+});
+
 
 app.Run();
 
